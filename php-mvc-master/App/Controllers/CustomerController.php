@@ -53,10 +53,10 @@ class CustomerController extends \Core\Controller{
         View::render('Home/register.php');
     }
 
-    public function logoutAction(){
-        session_destroy();
-        header("Location: /login");
-    }
+//    public function logoutAction(){
+//        session_destroy();
+//        header("Location: /login");
+//    }
 
     public function viewAction(){
         View::render("Home/contact.php");

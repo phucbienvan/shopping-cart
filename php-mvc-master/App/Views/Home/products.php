@@ -17,7 +17,7 @@ include "../App/Views/Home/layout/header.php";
                 foreach ($products as $item){
                     ?>
                     <div class="grid_1_of_4 images_1_of_4">
-                        <img src="images/jisoo.png">
+                        <img src="/uploads/<?php echo $item['image']?>">
                         <a href="preview/<?php echo $item['id']?>"><img src="" alt="" /></a>
                         <h2><?php echo $item['name']?> </h2>
                         <p><?php echo $item['description'] ?></p>

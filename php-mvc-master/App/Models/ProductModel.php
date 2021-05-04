@@ -43,7 +43,7 @@ class ProductModel extends Core\Model {
     //    in ra danh sách sản phẩm theo danh mục category
     public static function getProductsListByCategory($id_type){
         $db = static::getDB();
-        $query = "SELECT id, name, unit_price, promotion_price FROM products WHERE id_type = :id_type ORDER BY id_type desc LIMIT 8";
+        $query = "SELECT * FROM products WHERE id_type = :id_type ORDER BY id_type desc LIMIT 8";
         $stmt = $db ->prepare($query);
         $stmt->bindParam(':id_type', $id_type, PDO::PARAM_INT);
         $stmt->execute();
@@ -82,6 +82,16 @@ class ProductModel extends Core\Model {
         return $stmt->execute();
     }
 
+//    //lay hinh anh
+//    public static function getImage(int $id){
+//        $path = '/uploads';
+//        $pathToProductImg = $path.$id. '.jpg';
+//        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $pathToProductImg)){
+//            return $pathToProductImg;
+//        }else{
+//
+//        }
+//    }
 
 
 

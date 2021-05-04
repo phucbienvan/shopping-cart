@@ -27,41 +27,6 @@
 						</tr>
 
                     <?php } ?>
-<!--						<tr class="even gradeC">-->
-<!--							<td>02</td>-->
-<!--							<td>Explorer </td>-->
-<!--							<td><a href="">Edit</a> || <a href="">Delete</a></td>-->
-<!--						</tr>-->
-<!--						<tr class="odd gradeX">-->
-<!--							<td>03</td>-->
-<!--							<td>Internet</td>-->
-<!--							<td><a href="">Edit</a> || <a href="">Delete</a></td>-->
-<!--						</tr>-->
-<!--						<tr class="even gradeC">-->
-<!--							<td>04</td>-->
-<!--							<td>Explorer </td>-->
-<!--							<td><a href="">Edit</a> || <a href="">Delete</a></td>-->
-<!--						</tr>-->
-<!--							<tr class="odd gradeX">-->
-<!--							<td>05</td>-->
-<!--							<td>Internet</td>-->
-<!--							<td><a href="">Edit</a> || <a href="">Delete</a></td>-->
-<!--						</tr>-->
-<!--						<tr class="even gradeC">-->
-<!--							<td>06</td>-->
-<!--							<td>Explorer </td>-->
-<!--							<td><a href="">Edit</a> || <a href="">Delete</a></td>-->
-<!--						</tr>-->
-<!--						<tr class="odd gradeX">-->
-<!--							<td>07</td>-->
-<!--							<td>Internet</td>-->
-<!--							<td><a href="">Edit</a> || <a href="">Delete</a></td>-->
-<!--						</tr>-->
-<!--						<tr class="even gradeC">-->
-<!--							<td>08</td>-->
-<!--							<td>Explorer </td>-->
-<!--							<td><a href="">Edit</a> || <a href="">Delete</a></td>-->
-<!--						</tr>-->
 					</tbody>
 				</table>
                </div>

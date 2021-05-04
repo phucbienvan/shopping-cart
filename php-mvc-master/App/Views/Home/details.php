@@ -8,7 +8,7 @@ include "../App/Views/Home/layout/header.php";
     	<div class="section group">
 				<div class="cont-desc span_1_of_2">				
 					<div class="grid images_3_of_2">
-                        <img src="/images/jisoo.png">
+                        <img src="/uploads/<?php echo $productById['image']?>">
 					</div>
 
 				<div class="desc span_3_of_2">

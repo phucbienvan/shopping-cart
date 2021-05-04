@@ -57,15 +57,7 @@ class Customer extends \Core\Model{
         return true;
     }
 
-//    public static function isCustomer(){
-//        $isCustomer = false;
-//        if(!Customer::isGuest()){
-//            $idCustomer = Customer::checkLogged();
-//            $customer = Customer::getUserById($idCustomer);
-//            $isCustomer = true;
-//        };
-//        return $isCustomer;
-//    }
+
 
     //  lay id theo nguoi dung
     public static function getCustomerById($id){

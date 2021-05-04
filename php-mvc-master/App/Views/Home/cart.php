@@ -26,7 +26,7 @@ include "../App/Views/Home/layout/header.php";
                     ?>
                     <tr>
                         <td><?php echo $item['name']?></td>
-                        <td><img src="/images/jisoo.png" alt=""/></td>
+                        <td><img src="/uploads/<?php echo $item['image']?>" alt=""/></td>
                         <td><?php echo $item['unit_price']?></td>
                         <td>
                         <?php  echo $item['quantity']?>
@@ -44,20 +44,12 @@ include "../App/Views/Home/layout/header.php";
                         <th>Sub Total : </th>
                         <td><?php echo $sub_total?></td>
                     </tr>
-                    <tr>
-                        <th>VAT : </th>
-                        <td>
-                            <?php
-                            $vat = 0.2;
-                            echo $vat;
-                            ?></td>
-                    </tr>
+
                     <tr>
                         <th>Grand Total :</th>
                         <td>
                             <?php
-                            $grand_total = $sub_total + $vat * 100;
-                            echo $grand_total;
+                            echo $sub_total;
                             ?>
                         </td>
                     </tr>
@@ -68,7 +60,7 @@ include "../App/Views/Home/layout/header.php";
                     <a href="index"> <img src="images/shop.png" alt="" /></a>
                 </div>
                 <div class="shopright">
-                    <a href="logout"> <img src="images/check.png" alt="" /></a>
+                    <a href="checkout"> <img src="images/check.png" alt="" /></a>
                 </div>
             </div>
         </div>

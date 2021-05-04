@@ -35,6 +35,11 @@
                         <li><a href="/admin/productlist">Product List</a> </li>
                     </ul>
                 </li>
+                <li><a class="menuitem">Cart</a>
+                    <ul class="submenu">
+                        <li><a href="/admin/cartlist">Cart List</a> </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

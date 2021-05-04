@@ -44,4 +44,28 @@ class CartModel extends \Core\Model{
         return $stmt->execute();
     }
 
+    public static function checkout($id_customer, $total, $note){
+        $db = static::getDB();
+        $query ="INSERT INTO bills(id_customer, total, note) VALUES (:id_customer, :total, :note)";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(":id_customer", $id_customer, PDO::PARAM_INT);
+        $stmt->bindParam(":total", $total, PDO::PARAM_INT);
+        $stmt->bindParam(":note", $note, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
+
+
+    public static function getAll(){
+        $db = static::getDB();
+        $stmt = $db->query('SELECT * FROM bills');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public static function deleteBill($id){
+        $db = static::getDB();
+        $query = "DELETE FROM bills WHERE id =:id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
 }
