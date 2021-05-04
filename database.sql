@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3307
--- Thời gian đã tạo: Th4 26, 2021 lúc 04:20 AM
+-- Thời gian đã tạo: Th5 04, 2021 lúc 06:34 AM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 7.3.27
 
@@ -24,6 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `bills`
+--
+
+CREATE TABLE `bills` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_customer` int(11) DEFAULT NULL,
+  `total` float DEFAULT NULL COMMENT 'tổng tiền',
+  `note` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Đang đổ dữ liệu cho bảng `bills`
+--
+
+INSERT INTO `bills` (`id`, `id_customer`, `total`, `note`) VALUES
+(6, 6, 900000, 'dsd'),
+(7, 6, 900000, 'dsdsasa'),
+(8, 6, 600000, 'haha'),
+(9, 6, 650000, ''),
+(10, 6, 360000, 'haha'),
+(11, 6, 131111, 'haha');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `bill_detail`
 --
 
@@ -32,17 +57,17 @@ CREATE TABLE `bill_detail` (
   `id_customer` int(10) NOT NULL,
   `id_product` int(10) NOT NULL,
   `quantity` int(11) NOT NULL COMMENT 'số lượng',
-  `unit_price` double NOT NULL
+  `unit_price` double NOT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Đang đổ dữ liệu cho bảng `bill_detail`
 --
 
-INSERT INTO `bill_detail` (`id_cart`, `id_customer`, `id_product`, `quantity`, `unit_price`) VALUES
-(1, 6, 1, 1, 150000),
-(6, 6, 1, 1, 150000),
-(7, 6, 1, 1, 150000);
+INSERT INTO `bill_detail` (`id_cart`, `id_customer`, `id_product`, `quantity`, `unit_price`, `status`) VALUES
+(23, 6, 50, 1, 120000, ''),
+(22, 6, 8, 1, 11111, '');
 
 -- --------------------------------------------------------
 
@@ -100,6 +125,32 @@ INSERT INTO `customers` (`id`, `name`, `gender`, `email`, `password`, `address`,
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(10) NOT NULL,
+  `title` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'tiêu đề',
+  `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'nội dung',
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'hình',
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `update_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `content`, `image`, `create_at`, `update_at`) VALUES
+(1, 'Mùa trung thu năm nay, Hỷ Lâm Môn muốn gửi đến quý khách hàng sản phẩm mới xuất hiện lần đầu tiên tại Việt nam \"Bánh trung thu Bơ Sữa HongKong\".', 'Những ý tưởng dưới đây sẽ giúp bạn sắp xếp tủ quần áo trong phòng ngủ chật hẹp của mình một cách dễ dàng và hiệu quả nhất. ', 'sample1.jpg', '2017-03-11 06:20:23', '0000-00-00 00:00:00'),
+(2, 'Tư vấn cải tạo phòng ngủ nhỏ sao cho thoải mái và thoáng mát', 'Chúng tôi sẽ tư vấn cải tạo và bố trí nội thất để giúp phòng ngủ của chàng trai độc thân thật thoải mái, thoáng mát và sáng sủa nhất. ', 'sample2.jpg', '2016-10-20 02:07:14', '0000-00-00 00:00:00'),
+(3, 'Đồ gỗ nội thất và nhu cầu, xu hướng sử dụng của người dùng', 'Đồ gỗ nội thất ngày càng được sử dụng phổ biến nhờ vào hiệu quả mà nó mang lại cho không gian kiến trúc. Xu thế của các gia đình hiện nay là muốn đem thiên nhiên vào nhà ', 'sample3.jpg', '2016-10-20 02:07:14', '0000-00-00 00:00:00'),
+(4, 'Hướng dẫn sử dụng bảo quản đồ gỗ, nội thất.', 'Ngày nay, xu hướng chọn vật dụng làm bằng gỗ để trang trí, sử dụng trong văn phòng, gia đình được nhiều người ưa chuộng và quan tâm. Trên thị trường có nhiều sản phẩm mẫu ', 'sample4.jpg', '2016-10-20 02:07:14', '0000-00-00 00:00:00'),
+(5, 'Phong cách mới trong sử dụng đồ gỗ nội thất gia đình', 'Đồ gỗ nội thất gia đình ngày càng được sử dụng phổ biến nhờ vào hiệu quả mà nó mang lại cho không gian kiến trúc. Phong cách sử dụng đồ gỗ hiện nay của các gia đình hầu h ', 'sample5.jpg', '2016-10-20 02:07:14', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `products`
 --
 
@@ -119,13 +170,35 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `id_type`, `description`, `unit_price`, `promotion_price`, `image`, `unit`) VALUES
-(1, 'Bánh Crepe Sầu riêng', 5, 'ngon tuyet', 150000, 120000, '1430967449-pancake-sau-rieng-6.jpg', 'hộp'),
-(2, 'Bánh Crepe Chocolate', 6, 'ngon tuyet', 180000, 160000, 'crepe-chocolate.jpg', 'hộp'),
-(8, 'Pudding cake', 5, 'ngonnnnnnnnn me ly', 11111, 22222, 'anhdep', 'cai'),
-(50, 'Bánh su kem sữa tươi', 7, 'ngon tuyet', 120000, 100000, 'sukem.jpg', 'cái'),
-(63, 'Pudding Thailand', 2, 'ngonnnnnnnnn me ly', 10000, 20000, 'anhdep', 'cai'),
-(64, 'Chesse Cake', 2, 'ngoonnnnnnnnnnnnn', 200000, 22222, '', 'hop'),
-(65, 'Tiramisu', 4, 'ngonnnnnnnnn me ly', 200000, 20000, '', 'hop');
+(1, 'Bánh Crepe Sầu riêng', 5, 'ngon tuyet', 150000, 120000, '12.jpg', 'hộp'),
+(2, 'Bánh Crepe Chocolate', 6, 'ngon tuyet', 180000, 160000, '23.png', 'hộp'),
+(8, 'Pudding cake', 5, 'ngonnnnnnnnn me ly', 11111, 22222, '12.jpg', 'cai'),
+(50, 'Bánh su kem sữa tươi', 7, 'ngon tuyet', 120000, 100000, '34.png', 'cái'),
+(63, 'Pudding Thailand', 2, 'ngonnnnnnnnn me ly', 10000, 20000, '23.png', 'cai'),
+(64, 'Chesse Cake', 2, 'ngoonnnnnnnnnnnnn', 200000, 22222, '23.png', 'hop'),
+(65, 'Tiramisu', 4, 'ngonnnnnnnnn me ly', 200000, 20000, '34.png', 'hop');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `slide`
+--
+
+CREATE TABLE `slide` (
+  `id` int(11) NOT NULL,
+  `link` varchar(100) NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `slide`
+--
+
+INSERT INTO `slide` (`id`, `link`, `image`) VALUES
+(1, '', 'banner1.jpg'),
+(2, '', 'banner2.jpg'),
+(3, '', 'banner3.jpg'),
+(4, '', 'banner4.jpg');
 
 -- --------------------------------------------------------
 
@@ -158,6 +231,13 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`, `phone`) VA
 --
 
 --
+-- Chỉ mục cho bảng `bills`
+--
+ALTER TABLE `bills`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bills_ibfk_1` (`id_customer`);
+
+--
 -- Chỉ mục cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
@@ -177,11 +257,23 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `products_id_type_foreign` (`id_type`);
+
+--
+-- Chỉ mục cho bảng `slide`
+--
+ALTER TABLE `slide`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `users`
@@ -195,10 +287,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `bills`
+--
+ALTER TABLE `bills`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT cho bảng `bill_detail`
 --
 ALTER TABLE `bill_detail`
-  MODIFY `id_cart` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_cart` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
@@ -216,7 +314,13 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+
+--
+-- AUTO_INCREMENT cho bảng `slide`
+--
+ALTER TABLE `slide`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
